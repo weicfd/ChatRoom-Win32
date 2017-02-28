@@ -5,7 +5,7 @@
 
 CPtrList m_UsesrList;//所有的用户
 SOCKET m_sUDP;//UDPSOCKET
-MSG_INFO * m_pMsg;//用于发送消息
+MSG_INFO * m_pMsg;
 CChatServerDlg * m_pmainwnd;
 
 CUDPServer::CUDPServer(CChatServerDlg *pWnd)

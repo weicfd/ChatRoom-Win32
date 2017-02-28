@@ -55,14 +55,14 @@ CChatClientDlg::CChatClientDlg(CWnd* pParent /*=NULL*/)
 	m_pUDPClient = new CUDPClient(this);
 	//m_bFilter = FALSE;
 	m_bConnected = FALSE;
-	crf = RGB(0,0,0);
+	crf = RGB(0,0,0);   // m字体颜色
 	m_hIcon = AfxGetApp()->LoadIcon(IDI_LARGEQQ);  // m软件图标
 }
 
-void CChatClientDlg::DoDataExchange(CDataExchange* pDX)
+void CChatClientDlg::DoDataExchange(CDataExchange* pDX)    // m数据交换
 {
 	CDialog::DoDataExchange(pDX);
-}
+}  
 
 BEGIN_MESSAGE_MAP(CChatClientDlg, CDialog)
 	ON_WM_SYSCOMMAND()
@@ -81,7 +81,7 @@ BEGIN_MESSAGE_MAP(CChatClientDlg, CDialog)
 	ON_WM_DESTROY()
 	ON_COMMAND(ID_EXIT, &CChatClientDlg::OnExit)   // m菜单 -> 退出
 //	ON_COMMAND(ID_SHOWIP, &CChatClientDlg::OnShowip)
-	ON_NOTIFY(LVN_ITEMCHANGED, IDC_USERLIST, &CChatClientDlg::OnLvnItemchangedUserlist)
+	ON_NOTIFY(LVN_ITEMCHANGED, IDC_USERLIST, &CChatClientDlg::OnLvnItemchangedUserlist) // m（消息，控件，处理函数）
 //	ON_BN_CLICKED(IDC_QUIET, &CChatClientDlg::OnBnClickedQuiet)
 END_MESSAGE_MAP()
 
@@ -97,7 +97,7 @@ BOOL CChatClientDlg::OnInitDialog()
 	int err;
 
 	wVersionRequested = MAKEWORD( 2, 2 );
-	err = WSAStartup( wVersionRequested, &wsaData );
+	err = WSAStartup( wVersionRequested, &wsaData );   // initiates use of the Winsock DLL 初始化Win Socket 动态链接库
 	if ( err != 0 ) {
 		MessageBox(_T("SOCKET初始化没有成功"),_T("警告"),MB_ICONWARNING|MB_OK);
 		PostQuitMessage(0);
@@ -117,7 +117,7 @@ BOOL CChatClientDlg::OnInitDialog()
 	}
 
 	// 设置此对话框的图标。当应用程序主窗口不是对话框时，框架将自动
-	//  执行此操作
+	// 执行此操作
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
@@ -140,6 +140,8 @@ void CChatClientDlg::OnSysCommand(UINT nID, LPARAM lParam)
 		CDialog::OnSysCommand(nID, lParam);
 	}
 }
+
+
 
 // 如果向对话框添加最小化按钮，则需要下面的代码
 //  来绘制该图标。对于使用文档/视图模型的 MFC 应用程序，
@@ -177,25 +179,26 @@ HCURSOR CChatClientDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
 //list控件，显示在线用户的函数
 
 void CChatClientDlg::InitList()
 {
 	//初始化LIST控件，加上标题
 	CListCtrl * pList = (CListCtrl *)GetDlgItem(IDC_USERLIST);
-	pList->ModifyStyleEx(0, WS_EX_CLIENTEDGE);
+	pList->ModifyStyleEx(0, WS_EX_CLIENTEDGE);  // 修改List扩展风格
 	AddExStyleOfList(LVS_EX_FULLROWSELECT | LVS_OWNERDRAWFIXED);
 
 	int i;
 	LV_COLUMN lvc;
 
 	lvc.mask = LVCF_FMT | LVCF_WIDTH | LVCF_TEXT | LVCF_SUBITEM;
-	CString	strTemp[2] = {"名称", "IP"};
+	CString	strTemp[2] = {"用户名", "IP"};
 	int size[2] = {60,90};//添加标题栏,长度
 	for(i = 0; i < 2; i++)
 	{
 		lvc.iSubItem = i;
-		lvc.pszText = (char*)(LPCTSTR)strTemp[i];
+		lvc.pszText = (char*)(LPCTSTR)strTemp[i];   // 此时列表为空，只显示 "用户名，IP"
 		lvc.cx = size[i];
 		lvc.fmt = LVCFMT_CENTER;
 		pList->InsertColumn(i, &lvc);//添加一列
@@ -214,6 +217,7 @@ void CChatClientDlg::InitType()
 	pTo->AddString("所有人");
 	pTo->SetCurSel(0);
 
+	// 沟通类型
 	CComboBox* pType = (CComboBox*)GetDlgItem(IDC_TYPE);
 	pType->ResetContent();
 	CString str;
@@ -225,7 +229,7 @@ void CChatClientDlg::InitType()
 	pType->SetCurSel(0);
 }
 
-//为LIST添加新的扩展消息
+//修改List扩展风格
 void CChatClientDlg::AddExStyleOfList(DWORD dwNewStyle)
 {
 	CListCtrl * pList = (CListCtrl *)GetDlgItem(IDC_USERLIST);
@@ -250,7 +254,7 @@ void CChatClientDlg::RemoveItemOfList(char* name)
 	}
 }
 
-//为LIST添加一列,其中i为图标的类型，name为用户名，text为IP地址
+//为LIST添加一行,其中i为图标的类型，name为用户名，text为IP地址
 void CChatClientDlg::AddItemOfList(short i, char* name, char* text)
 {
 	LVITEM			lvi;
@@ -272,7 +276,7 @@ void CChatClientDlg::AddItemOfList(short i, char* name, char* text)
 
 }
 
-//当用户双击LIST的时候给CURRENT COMBO中添加一列
+//当用户双击LIST的时候给CURRENT COMBO中添加一行
 void CChatClientDlg::OnNMDblclkUserlist(NMHDR *pNMHDR, LRESULT *pResult)
 {
 	NM_LISTVIEW* pNMItem = (NM_LISTVIEW*)pNMHDR;
@@ -285,8 +289,8 @@ void CChatClientDlg::OnNMDblclkUserlist(NMHDR *pNMHDR, LRESULT *pResult)
 		CComboBox* pCurr = (CComboBox*)GetDlgItem(IDC_CURRENT);
 		if (pCurr->FindStringExact(-1,(LPCTSTR)str)<0)//当CURRENT COMBO中有相同的时候不添加
 		{
-			pCurr->AddString(str);
-			pCurr->SelectString(-1,(LPCTSTR)str);
+			pCurr->AddString(str);  // m下拉框中添加点击的用户名
+			pCurr->SelectString(-1,(LPCTSTR)str);  // m选中点击的用户名
 		}else
 			pCurr->SelectString(-1,(LPCTSTR)str);
 	}
@@ -326,25 +330,30 @@ void CChatClientDlg::TextOut(LPCTSTR lpszMessage, COLORREF clr)
 void CChatClientDlg::OnBnClickedSend()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	CComboBox* pTo = (CComboBox*)GetDlgItem(IDC_CURRENT);
-	CComboBox* pType = (CComboBox*)GetDlgItem(IDC_TYPE);
-	CWnd* pText = (CWnd*)GetDlgItem(IDC_MSG);
+	CComboBox* pTo = (CComboBox*)GetDlgItem(IDC_CURRENT);  //m收件人
+	CComboBox* pType = (CComboBox*)GetDlgItem(IDC_TYPE);    // m沟通类型
+	CWnd* pText = (CWnd*)GetDlgItem(IDC_MSG);  // m消息内容
 	//CButton* pSecret = (CButton*)GetDlgItem(IDC_QUIET);  // 悄悄的
 
-	MSG_INFO mi;
+	MSG_INFO mi;   // 为要发送的消息体
 	CString tmp;
-	strcpy(mi.m_From,(LPCTSTR)m_strName);
-	pTo->GetWindowText(tmp);
+	strcpy(mi.m_From,(LPCTSTR)m_strName); 
+
+	pTo->GetWindowText(tmp);    // tmp -- 收件人
 	if (tmp == "所有人")		tmp = "";
 	strcpy(mi.m_To,(LPCTSTR)tmp);
 	tmp.Empty();
+	
 	pType->GetWindowText(tmp);
 	mi.m_Type = pType->FindString(0, tmp);
 	tmp.Empty();
+	
 	pText->GetWindowText(tmp);
 	strcpy(mi.m_Text,(LPCTSTR)tmp);
-	if(tmp.IsEmpty()) return;
+	
+	if(tmp.IsEmpty()) return;  // 消息内容为空，则不发送
 	//mi.m_Secret = pSecret->GetCheck();
+	
 	mi.m_Color = crf;
 	pText->SetWindowText(_TEXT(""));
 	m_pUDPClient->SendMsg(mi);
@@ -410,7 +419,7 @@ HBRUSH CChatClientDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 }
 
 
-//启用或禁用连接或断开连接
+//启用或禁用（功能菜单）连接或断开连接
 void CChatClientDlg::OnInitMenuPopup(CMenu* pPopupMenu, UINT nIndex, BOOL bSysMenu)
 {
 	if (nIndex == 0)
