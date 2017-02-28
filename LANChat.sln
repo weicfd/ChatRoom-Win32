@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChatClient", "ChatClient\ChatClient.vcxproj", "{DFC2E465-E6C3-4998-BAAE-81E6DDFAD1DC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChatServer", "ChatServer\ChatServer.vcxproj", "{F7EBC137-7244-4369-B500-58D196C2318C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFC2E465-E6C3-4998-BAAE-81E6DDFAD1DC}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{DFC2E465-E6C3-4998-BAAE-81E6DDFAD1DC}.Debug|ARM.ActiveCfg = Debug|Win32
+		{DFC2E465-E6C3-4998-BAAE-81E6DDFAD1DC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DFC2E465-E6C3-4998-BAAE-81E6DDFAD1DC}.Debug|Win32.Build.0 = Debug|Win32
+		{DFC2E465-E6C3-4998-BAAE-81E6DDFAD1DC}.Debug|x64.ActiveCfg = Debug|Win32
+		{DFC2E465-E6C3-4998-BAAE-81E6DDFAD1DC}.Debug|x86.ActiveCfg = Debug|Win32
+		{DFC2E465-E6C3-4998-BAAE-81E6DDFAD1DC}.Debug|x86.Build.0 = Debug|Win32
+		{DFC2E465-E6C3-4998-BAAE-81E6DDFAD1DC}.Release|Any CPU.ActiveCfg = Release|Win32
+		{DFC2E465-E6C3-4998-BAAE-81E6DDFAD1DC}.Release|ARM.ActiveCfg = Release|Win32
+		{DFC2E465-E6C3-4998-BAAE-81E6DDFAD1DC}.Release|Win32.ActiveCfg = Release|Win32
+		{DFC2E465-E6C3-4998-BAAE-81E6DDFAD1DC}.Release|Win32.Build.0 = Release|Win32
+		{DFC2E465-E6C3-4998-BAAE-81E6DDFAD1DC}.Release|x64.ActiveCfg = Release|Win32
+		{DFC2E465-E6C3-4998-BAAE-81E6DDFAD1DC}.Release|x86.ActiveCfg = Release|Win32
+		{DFC2E465-E6C3-4998-BAAE-81E6DDFAD1DC}.Release|x86.Build.0 = Release|Win32
+		{F7EBC137-7244-4369-B500-58D196C2318C}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{F7EBC137-7244-4369-B500-58D196C2318C}.Debug|ARM.ActiveCfg = Debug|Win32
+		{F7EBC137-7244-4369-B500-58D196C2318C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F7EBC137-7244-4369-B500-58D196C2318C}.Debug|Win32.Build.0 = Debug|Win32
+		{F7EBC137-7244-4369-B500-58D196C2318C}.Debug|x64.ActiveCfg = Debug|Win32
+		{F7EBC137-7244-4369-B500-58D196C2318C}.Debug|x86.ActiveCfg = Debug|Win32
+		{F7EBC137-7244-4369-B500-58D196C2318C}.Debug|x86.Build.0 = Debug|Win32
+		{F7EBC137-7244-4369-B500-58D196C2318C}.Release|Any CPU.ActiveCfg = Release|Win32
+		{F7EBC137-7244-4369-B500-58D196C2318C}.Release|ARM.ActiveCfg = Release|Win32
+		{F7EBC137-7244-4369-B500-58D196C2318C}.Release|Win32.ActiveCfg = Release|Win32
+		{F7EBC137-7244-4369-B500-58D196C2318C}.Release|Win32.Build.0 = Release|Win32
+		{F7EBC137-7244-4369-B500-58D196C2318C}.Release|x64.ActiveCfg = Release|Win32
+		{F7EBC137-7244-4369-B500-58D196C2318C}.Release|x86.ActiveCfg = Release|Win32
+		{F7EBC137-7244-4369-B500-58D196C2318C}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,364 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (Simplified, PRC) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\ChatClient.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""l.CHS\\afxres.rc""      // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 ChatClient"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            128,IDC_STATIC,14,14,21,20
+    LTEXT           "ChatClient，1.0 版",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2010",IDC_STATIC,42,26,114,8
+    DEFPUSHBUTTON   "确定",IDOK,113,41,50,14,WS_GROUP
+END
+
+IDD_CHATCLIENT_DIALOG DIALOGEX 0, 0, 334, 226
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "局域网聊天工具1.0(客户端)"
+MENU IDR_MENU
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_USERLIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,90,138,WS_EX_DLGMODALFRAME | WS_EX_STATICEDGE
+    CONTROL         "",IDC_CHATVIEW,"RichEdit20A",ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | WS_BORDER | WS_VSCROLL | WS_TABSTOP,114,6,205,139
+    LTEXT           "聊天对象：",IDC_STATIC,21,161,43,8,0,WS_EX_RIGHT
+    LTEXT           "信息：",IDC_STATIC,42,182,22,8,0,WS_EX_RIGHT
+    EDITTEXT        IDC_MSG,67,181,190,30,ES_MULTILINE | WS_VSCROLL
+    PUSHBUTTON      "颜色...",IDC_COLORSELECT,278,158,29,14
+    PUSHBUTTON      "发送",IDC_SEND,278,188,29,14
+    COMBOBOX        IDC_CURRENT,67,159,50,48,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_TYPE,131,159,50,48,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_CONNECTSET DIALOGEX 0, 0, 200, 129
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "连接设置"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,31,94,50,14
+    PUSHBUTTON      "取消",IDCANCEL,119,94,50,14
+    EDITTEXT        IDC_NAME,95,26,54,16,ES_AUTOHSCROLL
+    LTEXT           "用户名：",IDC_STATIC,28,28,33,8,0,WS_EX_RIGHT
+    CONTROL         "",IDC_IP,"SysIPAddress32",WS_TABSTOP,78,60,88,13
+    LTEXT           "服务器IP：",IDC_STATIC,20,63,42,9,0,WS_EX_RIGHT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "TODO: <公司名>"
+            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "ChatClient.exe"
+            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
+            VALUE "OriginalFilename", "ChatClient.exe"
+            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_CHATCLIENT_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 327
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 219
+    END
+
+    IDD_CONNECTSET, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 193
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 122
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU MENU
+BEGIN
+    POPUP "功能(&F)"
+    BEGIN
+        MENUITEM "连接(&C)...",                   ID_CONNECT
+        MENUITEM "断开(&D)",                      ID_DISCONNECT
+        MENUITEM "退出(&E)",                      ID_EXIT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_IMAGE               BITMAP                  "res\\USER.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_LARGEQQ             ICON                    "res\\largeQQ.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_CONNECTSET AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_CHATCLIENT_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_ABOUTBOX            "关于 ChatClient(&A)..."
+    IDS_SOCKETS_INIT_FAILED "Windows 套接字初始化失败。"
+    IDS_SERVERRESET         "服务器可能已经关闭!"
+    IDS_CONNECTIONCLOSED    "关闭连接"
+    IDS_RETRYCONNECT        "连接服务器失败\n再试一次?"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_TALK0               "与,说"
+    IDS_TALK1               "冲,叫"
+    IDS_TALK2               "亲了亲 , 的脸颊"
+    IDS_TALK3               "轻轻地拥抱着,"
+    IDS_TALK4               "朝,横眉竖目道"
+    IDS_TALK5               "与,眨巴了两下眼睛"
+    IDS_TALK6               "轻轻地推了推,的胳膊"
+    IDS_TALK7               "对,点了点头"
+    IDS_TALK8               "问,道"
+    IDS_TALK9               "傻兮兮的朝,笑笑"
+    IDS_TALK10              "对准,就是一拳"
+    IDS_TALK11              "凌空一腿踢在,脑袋上"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_TALK12              "拉着,的手语气心长地说"
+    IDS_TALK13              "狠狠地掴了,几个耳光"
+    IDS_TALK14              "毕恭毕敬地向,弯腰鞠躬"
+    IDS_TALK15              "感到十二分的歉意，低声对,说"
+    IDS_TALK16              "很赞同,"
+    IDS_TALK17              "惊讶的对,吐了吐舌头"
+    IDS_TALK18              "对,摇了摇头"
+    IDS_TALK19              "张大嘴巴，打了个哈欠"
+    IDS_TALK20              "对,微微一笑"
+    IDS_TALK21              "紧紧的握住,的手"
+    IDS_TALK22              "向,挥手"
+    IDS_TALK23              "耸耸双肩"
+    IDS_TALK24              "忍不住放声大哭"
+    IDS_TALK25              "双手捂着脸，呜呜咽咽的"
+    IDS_TALK26              "拍拍,的肩膀，双眼关切的说"
+    IDS_TALK27              "气鼓鼓的嘟嘴道"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_TALK28              "把胸脯拍得噼啪响"
+    IDS_TALK29              "依依不舍地拉着,的衣角"
+    IDS_TALK30              "用深情的眼神，痴痴地看着,"
+    IDS_TALK31              "抓抓头皮露出迷惑的神情"
+    IDS_TALK32              "悄悄地对,耳语"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_S0                  "说话"
+    IDS_S1                  "叫嚷"
+    IDS_S2                  "亲亲"
+    IDS_S3                  "拥抱"
+    IDS_S4                  "暴怒"
+    IDS_S5                  "眨眼"
+    IDS_S6                  "轻推"
+    IDS_S7                  "点头"
+    IDS_S8                  "询问"
+    IDS_S9                  "傻笑"
+    IDS_S10                 "拳打"
+    IDS_S11                 "脚踢"
+    IDS_S12                 "告诫"
+    IDS_S13                 "耳光"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_S14                 "鞠躬"
+    IDS_S15                 "歉意"
+    IDS_S16                 "同意"
+    IDS_S17                 "惊讶"
+    IDS_S18                 "摇头"
+    IDS_S19                 "哈欠"
+    IDS_S20                 "微笑"
+    IDS_S21                 "握手"
+    IDS_S22                 "挥手"
+    IDS_S23                 "耸肩"
+    IDS_S24                 "大哭"
+    IDS_S25                 "抽泣"
+    IDS_S26                 "安慰"
+    IDS_S27                 "生气"
+    IDS_S28                 "承诺"
+    IDS_S29                 "不舍"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_S30                 "深情"
+    IDS_S31                 "迷惑"
+    IDS_S32                 "耳语"
+END
+
+#endif    // Chinese (Simplified, PRC) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\ChatClient.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "l.CHS\afxres.rc"      // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
