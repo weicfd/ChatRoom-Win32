@@ -351,7 +351,7 @@ void CChatClientDlg::OnBnClickedSend()
 }
 
 
-//点击了连接菜单，启动连接
+//确定连接，启动连接
 void CChatClientDlg::OnConnect()
 {
 	CConnectDlg dlg;
@@ -440,16 +440,15 @@ void CChatClientDlg::OnDestroy()
 
 void CChatClientDlg::OnClose()
 {
+	OnDisconnect();  // m断开连接(如果这句在if里面会有空指针报错)
 	if(MessageBox("确定要退出！","通知",MB_OKCANCEL|MB_ICONINFORMATION) == IDOK)
 	{
-		OnDestroy();
-		CDialog::OnClose();
+		CDialog::OnClose();  // m会自动调用 OnDestroy 吧
 	}
 }
 
 void CChatClientDlg::OnExit()
 {
-	OnClose();
 	PostMessage(WM_CLOSE,0,0);
 }
 

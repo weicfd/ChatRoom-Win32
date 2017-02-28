@@ -155,11 +155,13 @@ HCURSOR CChatServerDlg::OnQueryDragIcon()
 }
 
 
-void CChatServerDlg::OnClose()
+
+// 调用 OnDestroy()
+void CChatServerDlg::OnClose() 
 {
 	if (MessageBox("确定要关闭服务器?","警告",MB_OKCANCEL|MB_ICONWARNING) == IDOK)
 	{
-		CDialog::OnClose();
+		CDialog::OnClose();   
 	}
 }
 
@@ -272,7 +274,7 @@ void CChatServerDlg::AddItemOfList(short i, char* name, char* text)
 }
 void CChatServerDlg::OnBnClickedExit()
 {
-	PostMessage(WM_CLOSE,0,0);
+	PostMessage(WM_CLOSE,0,0);   // 调用OnClose()
 }
 
 void CChatServerDlg::OnDestroy()
