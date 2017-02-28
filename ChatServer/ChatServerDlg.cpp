@@ -208,7 +208,7 @@ void CChatServerDlg::InitList()
 	LV_COLUMN lvc;
 
 	lvc.mask = LVCF_FMT | LVCF_WIDTH | LVCF_TEXT | LVCF_SUBITEM;
-	CString	strTemp[2] = {"名称", "IP"};
+	CString	strTemp[2] = {"用户名", "IP"};
 	int size[2] = {60,90};//添加标题栏,长度
 	for(i = 0; i < 2; i++)
 	{
@@ -251,14 +251,14 @@ void CChatServerDlg::RemoveItemOfList(char* name)
 	}
 }
 
-//为LIST添加一列,其中i为图标的类型，name为用户名，text为IP地址
-void CChatServerDlg::AddItemOfList(short i, char* name, char* text)
+//为LIST添加一列, name为用户名，IP地址
+void CChatServerDlg::AddItemOfList(char* name, char* IP)
 {
 	LVITEM			lvi;
 	CListCtrl * pList = (CListCtrl *)GetDlgItem(IDC_USERLIST);
-	lvi.mask = LVIF_TEXT | LVIF_IMAGE | LVIF_PARAM;
+	lvi.mask = LVIF_TEXT | LVIF_PARAM;
 	lvi.iItem = pList->GetItemCount();
-	lvi.iImage = i;
+	//lvi.iImage = i;
 	lvi.iSubItem = 0;
 	lvi.pszText = name;
 	lvi.cchTextMax = 64;
@@ -266,7 +266,7 @@ void CChatServerDlg::AddItemOfList(short i, char* name, char* text)
 	pList->InsertItem(&lvi);
 
 	lvi.mask = LVIF_TEXT;
-	lvi.pszText = text;
+	lvi.pszText = IP;
 	lvi.cchTextMax = 32;
 	lvi.iSubItem = 1;
 	pList->SetItem(&lvi);

@@ -77,7 +77,7 @@ void CUDPServer::OnLine(SOCKADDR_IN * psa)
 {//每一个用户都有一个USER_INFO
 	USER_INFO  *p = new USER_INFO();
 	memcpy(p->m_User , m_pMsg->m_From,20);
-	p->m_Image = m_pMsg->m_Image;
+	//p->m_Image = m_pMsg->m_Image;
 	strcpy(p->m_IP,inet_ntoa(psa->sin_addr));
 	p->m_SA = *psa;
 	//判断用户是否存在
@@ -99,7 +99,7 @@ void CUDPServer::OnLine(SOCKADDR_IN * psa)
 	UpdateAllClients();
 	m_UsesrList.AddTail(p);
 	SendListToNew(*p);
-	m_pmainwnd->AddItemOfList(p->m_Image,p->m_User,p->m_IP);
+	m_pmainwnd->AddItemOfList(p->m_User,p->m_IP);
 	m_pmainwnd->Message(p->m_User);
 	m_pmainwnd->MessageReturn("风尘仆仆地推门而入");
 }
@@ -141,7 +141,7 @@ void CUDPServer::UpdateAllClients()
 }
 
 //发送所有的用户名单
-void CUDPServer::SendListToNew(USER_INFO &ui)
+void CUDPServer::SendListToNew(USER_INFO &ui)  // ui 为新用户
 {
 	for(POSITION pos = m_UsesrList.GetHeadPosition(); pos != NULL;)
 	{
@@ -149,7 +149,7 @@ void CUDPServer::SendListToNew(USER_INFO &ui)
 		if (pui != NULL)
 		{
 			m_pMsg->m_Type = -1;
-			m_pMsg->m_Image = pui->m_Image;
+			//m_pMsg->m_Image = pui->m_Image;
 			strcpy(m_pMsg->m_From, pui->m_User);
 			strcpy(m_pMsg->m_IP,pui->m_IP);//传送给客户端IP
 			SendMsg( &ui);
@@ -190,13 +190,13 @@ void CUDPServer::Talk()
 	CString temp,first,second;
 	CString from = m_pMsg->m_From;
 	CString to = m_pMsg->m_To;
-	CString text = m_pMsg->m_Text;
-	int type = m_pMsg->m_Type;
+	CString text = m_pMsg->m_Text;    //  m用户在输入框中的消息内容
+	int type = m_pMsg->m_Type;    // m沟通类型
 
 	if(to.IsEmpty()) to = "所有人";
 	if(type > 32 || type < 0)
 		return;
-	temp.LoadString(IDS_TALK0 + type);	
+	temp.LoadString(IDS_TALK0 + type);	// m载入对应 type 的“表情字符”
 	int i=temp.Find(",");
 	if(i!=-1){
 		first=temp.Left(i);
@@ -208,17 +208,19 @@ void CUDPServer::Talk()
 			second="：";
 		}
 		m_pmainwnd->Message(from);
-		m_pmainwnd->Message(first);
+		//m_pmainwnd->Message(first);   // m表情字
+		m_pmainwnd->Message("告诉");  
 		m_pmainwnd->Message(to);
-		m_pmainwnd->Message(second);
+		//m_pmainwnd->Message(second);    // m表情字
 		m_pmainwnd->MessageReturn(text);
 	}
 	else{
 		first=temp;
 		second="： ";
 		m_pmainwnd->Message(from);
-		m_pmainwnd->Message(first);
-		m_pmainwnd->Message(second);
+		//m_pmainwnd->Message(first);
+		//m_pmainwnd->Message(second);
+		m_pmainwnd->Message(": ");
 		m_pmainwnd->MessageReturn(text);
 	}
 }

@@ -83,6 +83,7 @@ BEGIN_MESSAGE_MAP(CChatClientDlg, CDialog)
 //	ON_COMMAND(ID_SHOWIP, &CChatClientDlg::OnShowip)
 	ON_NOTIFY(LVN_ITEMCHANGED, IDC_USERLIST, &CChatClientDlg::OnLvnItemchangedUserlist) // m（消息，控件，处理函数）
 //	ON_BN_CLICKED(IDC_QUIET, &CChatClientDlg::OnBnClickedQuiet)
+ON_CBN_SELCHANGE(IDC_TYPE, &CChatClientDlg::OnCbnSelchangeType)
 END_MESSAGE_MAP()
 
 
@@ -254,14 +255,14 @@ void CChatClientDlg::RemoveItemOfList(char* name)
 	}
 }
 
-//为LIST添加一行,其中i为图标的类型，name为用户名，text为IP地址
-void CChatClientDlg::AddItemOfList(short i, char* name, char* text)
+//为LIST添加一行, name为用户名，IP地址
+void CChatClientDlg::AddItemOfList(char* name, char* IP)
 {
 	LVITEM			lvi;
 	CListCtrl * pList = (CListCtrl *)GetDlgItem(IDC_USERLIST);
-	lvi.mask = LVIF_TEXT | LVIF_IMAGE | LVIF_PARAM;
+	lvi.mask = LVIF_TEXT | LVIF_PARAM;
 	lvi.iItem = pList->GetItemCount();
-	lvi.iImage = i;
+	//lvi.iImage = i;
 	lvi.iSubItem = 0;
 	lvi.pszText = name;
 	lvi.cchTextMax = 64;
@@ -269,7 +270,7 @@ void CChatClientDlg::AddItemOfList(short i, char* name, char* text)
 	pList->InsertItem(&lvi);
 
 	lvi.mask = LVIF_TEXT;
-	lvi.pszText = text;
+	lvi.pszText = IP;
 	lvi.cchTextMax = 32;
 	lvi.iSubItem = 1;
 	pList->SetItem(&lvi);
@@ -368,7 +369,7 @@ void CChatClientDlg::OnConnect()
 	{
 		m_strName = dlg.m_strName;
 		this->SetWindowText(m_strName);
-		m_pUDPClient->Connect(dlg.m_strName,dlg.m_strIP,dlg.m_image);
+		m_pUDPClient->Connect(dlg.m_strName,dlg.m_strIP);
 	}
 }
 
@@ -502,3 +503,9 @@ void CChatClientDlg::OnLvnItemchangedUserlist(NMHDR *pNMHDR, LRESULT *pResult)
 //{
 //	// TODO: Add your control notification handler code here
 //}
+
+
+void CChatClientDlg::OnCbnSelchangeType()
+{
+	// TODO: Add your control notification handler code here
+}

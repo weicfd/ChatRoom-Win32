@@ -7,7 +7,7 @@ struct MSG_INFO
 	char m_To[20];//收信人姓名
 	COLORREF m_Color;//信息的颜色
 	//BOOL m_Secret;//是否悄悄话
-	int m_Image;//用户头像
+	//int m_Image;//用户头像
 	char m_IP[20];//用户IP，上线的时候用到
 	char m_Text[1000];
 };
@@ -16,7 +16,7 @@ struct USER_INFO
 {
 	char m_User[20]; // 用户名
 	char m_IP[20]; // 用户IP
-	int m_Image; // 用户头像
+	//int m_Image; // 用户头像
 	SOCKADDR_IN m_SA; // 用户地址，作为sendto的参数
 };
 

@@ -13,7 +13,7 @@ public:
 	void OnLine();
 	void OffLine();
 	static DWORD WINAPI WorkThread(void* param);
-	void Connect(LPCTSTR name,LPCTSTR ip,int image);
+	void Connect(LPCTSTR name,LPCTSTR ip);
 	void DisConnect();
 	void ServerShutDown();
 	void Talk();

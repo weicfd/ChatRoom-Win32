@@ -21,13 +21,13 @@ CUDPClient::~CUDPClient(void)
 	closesocket(m_sUDP);   // m关闭socket 连接
 }
 
-void CUDPClient::Connect(LPCTSTR name,LPCTSTR ip,int image)
+void CUDPClient::Connect(LPCTSTR name,LPCTSTR ip)
 {
 	memset(&mi,0,sizeof(MSG_INFO));   
 	strcpy(IP,ip);
 	strcpy(mi.m_From,name);
 	strcpy(m_name,name);
-	mi.m_Image = image;
+	//mi.m_Image = image;
 	mi.m_Type = -1;//上线  ，  m用户在线状态
 	SendMsg(mi);
 	CreateThread(NULL,0,CUDPClient::WorkThread,this,0,NULL);
@@ -46,7 +46,7 @@ DWORD WINAPI CUDPClient::WorkThread(void* param)
 	return 1;
 }
 
-//接收客户端数据
+//m接收服务器端数据
 void CUDPClient::ReceiveProc()
 {
 	int count = 0;
@@ -101,7 +101,7 @@ void CUDPClient::OnLine()
     m_pmainwnd->TextOut(mi.m_From, RGB(0,0,255));
 	m_pmainwnd->TextOut(_TEXT("风尘仆仆地推门而入\r\n"),RGB(255,0,0));
 	m_pmainwnd->m_bConnected = TRUE;
-	m_pmainwnd->AddItemOfList(mi.m_Image,mi.m_From,mi.m_IP);
+	m_pmainwnd->AddItemOfList(mi.m_From,mi.m_IP);
 }
 
 
@@ -160,9 +160,10 @@ void CUDPClient::Talk()
 		}
 		if(to == "") to = "所有人";
 		m_pmainwnd->TextOut((LPCTSTR)from, RGB(0,0,255));
-		m_pmainwnd->TextOut((LPCTSTR)first, RGB(0,0,0));
+		//m_pmainwnd->TextOut((LPCTSTR)first, RGB(0,0,0));    // m表情字
+		m_pmainwnd->TextOut((LPCTSTR)"告诉", RGB(0, 0, 0));
 		m_pmainwnd->TextOut((LPCTSTR)to, RGB(0,0,255));
-		m_pmainwnd->TextOut((LPCTSTR)second, RGB(0,0,0));
+		//m_pmainwnd->TextOut((LPCTSTR)second, RGB(0,0,0));    // m表情字
 		m_pmainwnd->TextOut((LPCTSTR)text,crf);
 		m_pmainwnd->TextOut((LPCTSTR)"\r\n",crf);
 	}
@@ -170,8 +171,9 @@ void CUDPClient::Talk()
 		first=temp;
 		second="： ";
 		m_pmainwnd->TextOut(from,RGB(0,0,255));
-		m_pmainwnd->TextOut(first,RGB(0,0,0));
-		m_pmainwnd->TextOut(second,RGB(0,0,0));
+		//m_pmainwnd->TextOut(first,RGB(0,0,0));
+		//m_pmainwnd->TextOut(second,RGB(0,0,0));
+		m_pmainwnd->TextOut(": ", RGB(0, 0, 0));
 		m_pmainwnd->TextOut(text,crf);
 		m_pmainwnd->TextOut("\r\n",crf);
 	}

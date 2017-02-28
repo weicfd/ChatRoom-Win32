@@ -23,9 +23,9 @@ public:
 
 //LIST控件
 public:
-	CImageList m_imgList;//图像列表，显示在线用户的图标
+	//CImageList m_imgList;//图像列表，显示在线用户的图标
 	void RemoveItemOfList(char* name);//移除
-	void AddItemOfList(short i, char* name, char* text);//添加
+	void AddItemOfList(char* name, char* IP);//添加
 	void AddExStyleOfList(DWORD dwNewStyle);//给USERLIST添加风格
 	void InitList();//初始化USERLIST
 	void InitType();//初始化TYPE COMBO控件
@@ -66,4 +66,5 @@ public:
 //	afx_msg void OnShowip();
 	afx_msg void OnLvnItemchangedUserlist(NMHDR *pNMHDR, LRESULT *pResult);
 //	afx_msg void OnBnClickedQuiet();
+	afx_msg void OnCbnSelchangeType();
 };
