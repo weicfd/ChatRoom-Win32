@@ -68,19 +68,19 @@ END
 
 IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "关于 ChatClient"
+CAPTION "关于 DchatM"
 FONT 9, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    ICON            128,IDC_STATIC,14,14,21,20
-    LTEXT           "ChatClient，1.0 版",IDC_STATIC,42,14,114,8,SS_NOPREFIX
-    LTEXT           "Copyright (C) 2010",IDC_STATIC,42,26,114,8
+    LTEXT           "DchatM，1.0 版",IDC_STATIC,51,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2017",IDC_STATIC,50,26,114,8
     DEFPUSHBUTTON   "确定",IDOK,113,41,50,14,WS_GROUP
+    ICON            IDI_LARGEQQ,IDC_STATIC,24,16,20,20
 END
 
 IDD_CHATCLIENT_DIALOG DIALOGEX 0, 0, 334, 226
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
-CAPTION "局域网聊天工具1.0(客户端)"
+CAPTION "DchatM 客户端"
 MENU IDR_MENU
 FONT 9, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
@@ -214,7 +214,7 @@ IDB_IMAGE               BITMAP                  "res\\USER.bmp"
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_LARGEQQ             ICON                    "res\\largeQQ.ico"
+IDI_LARGEQQ             ICON                    "C:\\Users\\lorrainepark\\Desktop\\LAB\\DL\\easy-lan-chat-master\\earth.ico"
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -232,6 +232,11 @@ BEGIN
     0
 END
 
+IDD_ABOUTBOX AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -240,7 +245,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_ABOUTBOX            "关于 ChatClient(&A)..."
+    IDS_ABOUTBOX            "关于 DchatM (&A)..."
     IDS_SOCKETS_INIT_FAILED "Windows 套接字初始化失败。"
     IDS_SERVERRESET         "服务器可能已经关闭!"
     IDS_CONNECTIONCLOSED    "关闭连接"

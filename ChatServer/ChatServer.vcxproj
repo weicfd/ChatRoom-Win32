@@ -135,7 +135,9 @@
     <ClInclude Include="UDPServer.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\earth.ico" />
     <Image Include="res\ChatServer.ico" />
+    <Image Include="res\icon1.ico" />
     <Image Include="res\USER.bmp" />
   </ItemGroup>
   <ItemGroup>
