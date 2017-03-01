@@ -192,7 +192,7 @@ void CUDPClient::Talk()
 
 void CUDPClient::Hide()
 {
-	CString from = "匿名者";
+	CString from = mi.m_From;
 	CString to = mi.m_To;
 	CString text = mi.m_Text;
 	COLORREF crf = mi.m_Color;
@@ -200,7 +200,7 @@ void CUDPClient::Hide()
 	if (from != m_name && to != m_name && to != "")
 		return;  //m这是别人的信息你不要管
 
-	m_pmainwnd->TextOut((LPCTSTR)from, RGB(0, 0, 255));
+	m_pmainwnd->TextOut((LPCTSTR)"匿名者", RGB(0, 0, 255));
 	m_pmainwnd->TextOut(": ", RGB(0, 0, 0));
 	m_pmainwnd->TextOut((LPCTSTR)text, crf);
 	m_pmainwnd->TextOut((LPCTSTR)"\r\n", crf);
