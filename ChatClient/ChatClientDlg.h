@@ -68,4 +68,5 @@ public:
 //	afx_msg void OnBnClickedQuiet();
 //	afx_msg void OnCbnSelchangeType();
 //	afx_msg void OnCbnSelchangeType();
+	afx_msg void OnEnChangeChatview();
 };

@@ -84,6 +84,7 @@ BEGIN_MESSAGE_MAP(CChatClientDlg, CDialog)
 	ON_NOTIFY(LVN_ITEMCHANGED, IDC_USERLIST, &CChatClientDlg::OnLvnItemchangedUserlist) // m（消息，控件，处理函数）
 //	ON_BN_CLICKED(IDC_QUIET, &CChatClientDlg::OnBnClickedQuiet)
 //ON_CBN_SELCHANGE(IDC_TYPE, &CChatClientDlg::OnCbnSelchangeType)
+ON_EN_CHANGE(IDC_CHATVIEW, &CChatClientDlg::OnEnChangeChatview)
 END_MESSAGE_MAP()
 
 
@@ -511,3 +512,14 @@ void CChatClientDlg::OnLvnItemchangedUserlist(NMHDR *pNMHDR, LRESULT *pResult)
 //{
 //	// TODO: Add your control notification handler code here
 //}
+
+
+void CChatClientDlg::OnEnChangeChatview()
+{
+	// TODO:  If this is a RICHEDIT control, the control will not
+	// send this notification unless you override the CDialog::OnInitDialog()
+	// function and call CRichEditCtrl().SetEventMask()
+	// with the ENM_CHANGE flag ORed into the mask.
+
+	// TODO:  Add your control notification handler code here
+}
