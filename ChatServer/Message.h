@@ -22,6 +22,7 @@ struct USER_INFO
 
 //type的的含义
 /*
+ 0		隐身
  1		正常谈话
 -1		上线
 -2		下线

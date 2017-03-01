@@ -73,8 +73,11 @@ void CUDPClient::ReceiveProc()
 		case -4://服务器关闭
 			ServerShutDown();
 			break;
+		case 0://隐身
+			Hide();
+			break;
 		default:
-			if (mi.m_Type == 1)//正常的交谈
+			if (mi.m_Type >= 1)//正常的交谈
 			{
 				Talk();
 			}
@@ -185,4 +188,20 @@ void CUDPClient::Talk()
 	//	m_pmainwnd->TextOut(text,crf);
 	//	m_pmainwnd->TextOut("\r\n",crf);
 	//}
+}
+
+void CUDPClient::Hide()
+{
+	CString from = "匿名者";
+	CString to = mi.m_To;
+	CString text = mi.m_Text;
+	COLORREF crf = mi.m_Color;
+
+	if (from != m_name && to != m_name && to != "")
+		return;  //m这是别人的信息你不要管
+
+	m_pmainwnd->TextOut((LPCTSTR)from, RGB(0, 0, 255));
+	m_pmainwnd->TextOut(": ", RGB(0, 0, 0));
+	m_pmainwnd->TextOut((LPCTSTR)text, crf);
+	m_pmainwnd->TextOut((LPCTSTR)"\r\n", crf);
 }

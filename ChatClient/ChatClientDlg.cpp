@@ -335,6 +335,7 @@ void CChatClientDlg::OnBnClickedSend()
 	CComboBox* pTo = (CComboBox*)GetDlgItem(IDC_CURRENT);  //m收件人
 	//CComboBox* pType = (CComboBox*)GetDlgItem(IDC_TYPE);    // m沟通类型
 	CWnd* pText = (CWnd*)GetDlgItem(IDC_MSG);  // m消息内容
+	CButton* pHide = (CButton*)GetDlgItem(IDC_HIDE);  // m是否隐身
 	//CButton* pSecret = (CButton*)GetDlgItem(IDC_QUIET);  // 悄悄的
 
 	MSG_INFO mi;   // 为要发送的消息体
@@ -349,7 +350,14 @@ void CChatClientDlg::OnBnClickedSend()
 	/*pType->GetWindowText(tmp);
 	mi.m_Type = pType->FindString(0, tmp);
 	tmp.Empty();*/
-	mi.m_Type = 1;   // m正常谈话
+	if (IsDlgButtonChecked(IDC_HIDE))
+	{
+		mi.m_Type = 0;  //m隐身
+	}
+	else
+	{
+		mi.m_Type = 1;   // m正常谈话
+	}
 	
 	pText->GetWindowText(tmp);
 	strcpy(mi.m_Text,(LPCTSTR)tmp);

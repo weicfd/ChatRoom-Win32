@@ -17,4 +17,5 @@ public:
 	void DisConnect();
 	void ServerShutDown();
 	void Talk();
+	void Hide(); 
 };

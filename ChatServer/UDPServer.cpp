@@ -61,8 +61,9 @@ void CUDPServer::ListenProc()
 		case -2://下线
 			OffLine(&clientaddr);
 			break;
+
 		default:
-			if (m_pMsg->m_Type == 1)//正常的交谈
+			if (m_pMsg->m_Type >= 0)//正常的交谈, 或者隐身0，服务器端可以看见所有消息
 			{
 				Talk();
 			}
