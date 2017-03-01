@@ -99,7 +99,7 @@ void CUDPClient::SendMsg(MSG_INFO &msg_info)
 void CUDPClient::OnLine()
 {
     m_pmainwnd->TextOut(mi.m_From, RGB(0,0,255));
-	m_pmainwnd->TextOut(_TEXT("风尘仆仆地推门而入\r\n"),RGB(255,0,0));
+	m_pmainwnd->TextOut(_TEXT(" 上线!\r\n"),RGB(255,0,0));
 	m_pmainwnd->m_bConnected = TRUE;
 	m_pmainwnd->AddItemOfList(mi.m_From,mi.m_IP);
 }
@@ -118,7 +118,7 @@ void CUDPClient::OffLine()
 		m_pmainwnd->RemoveItemOfList(mi.m_From);
 	}
 	m_pmainwnd->TextOut(mi.m_From, RGB(0,0,255));
-	m_pmainwnd->TextOut(_TEXT("静静地离开了，孤单的背影显得格外潇洒\r\n"),RGB(255,0,0));
+	m_pmainwnd->TextOut(_TEXT(" 下线!\r\n"),RGB(255,0,0));
 }
 
 //服务器关闭
@@ -135,46 +135,55 @@ void CUDPClient::Talk()
 	CString from = mi.m_From;
 	CString to = mi.m_To;
 	CString text = mi.m_Text;
-	int type = mi.m_Type;
+	//int type = mi.m_Type;
 	COLORREF crf = mi.m_Color;
 
 	//if (from != m_name&&to != m_name && mi.m_Secret)
-	if(from != m_name&&to != m_name)
+	// 如果要添加群发功能，可以删掉这句，然后在服务器端维护一个 target group，由服务器只给目标用户发消息
+	// 目标客户端就直接显示出来
+	if(to == "") to = "所有人";
+	if( (from != m_name&&to != m_name) || to!="所有人" )
 		return;  //m这是别人的信息你不要管
+
 	//if(from != m_name&&to != m_name && m_pmainwnd->m_bFilter)
 	//	return;//过滤不属于自己的消息
-	CString temp,first,second;
 
-	if(type > 32 || type < 0)    
-		return;  
-	temp.LoadString(IDS_TALK0 + type);	
-	int i=temp.Find(",");
-	if(i != -1){
-		first = temp.Left(i);
-		if(i != temp.GetLength() - 1){
-			second = temp.Mid(i + 1);
-			second += "：";
-		}
-		else{
-			second="：";
-		}
-		if(to == "") to = "所有人";
-		m_pmainwnd->TextOut((LPCTSTR)from, RGB(0,0,255));
-		//m_pmainwnd->TextOut((LPCTSTR)first, RGB(0,0,0));    // m表情字
-		m_pmainwnd->TextOut((LPCTSTR)"告诉", RGB(0, 0, 0));
-		m_pmainwnd->TextOut((LPCTSTR)to, RGB(0,0,255));
-		//m_pmainwnd->TextOut((LPCTSTR)second, RGB(0,0,0));    // m表情字
-		m_pmainwnd->TextOut((LPCTSTR)text,crf);
-		m_pmainwnd->TextOut((LPCTSTR)"\r\n",crf);
-	}
-	else{
-		first=temp;
-		second="： ";
-		m_pmainwnd->TextOut(from,RGB(0,0,255));
-		//m_pmainwnd->TextOut(first,RGB(0,0,0));
-		//m_pmainwnd->TextOut(second,RGB(0,0,0));
-		m_pmainwnd->TextOut(": ", RGB(0, 0, 0));
-		m_pmainwnd->TextOut(text,crf);
-		m_pmainwnd->TextOut("\r\n",crf);
-	}
+	m_pmainwnd->TextOut((LPCTSTR)from, RGB(0, 0, 255));
+	m_pmainwnd->TextOut(": ", RGB(0, 0, 0));
+	m_pmainwnd->TextOut((LPCTSTR)text, crf);
+	m_pmainwnd->TextOut((LPCTSTR)"\r\n", crf);
+
+	//CString temp,first,second;
+	//if(type > 32 || type < 0)    
+	//	return;  
+	//temp.LoadString(IDS_TALK0 + type);	
+	//int i=temp.Find(",");
+	//if(i != -1){
+	//	first = temp.Left(i);
+	//	if(i != temp.GetLength() - 1){
+	//		second = temp.Mid(i + 1);
+	//		second += "：";
+	//	}
+	//	else{
+	//		second="：";
+	//	}
+	//	if(to == "") to = "所有人";
+	//	m_pmainwnd->TextOut((LPCTSTR)from, RGB(0,0,255));
+	//	//m_pmainwnd->TextOut((LPCTSTR)first, RGB(0,0,0));    // m表情字
+	//	m_pmainwnd->TextOut((LPCTSTR)"告诉", RGB(0, 0, 0));
+	//	m_pmainwnd->TextOut((LPCTSTR)to, RGB(0,0,255));
+	//	//m_pmainwnd->TextOut((LPCTSTR)second, RGB(0,0,0));    // m表情字
+	//	m_pmainwnd->TextOut((LPCTSTR)text,crf);
+	//	m_pmainwnd->TextOut((LPCTSTR)"\r\n",crf);
+	//}
+	//else{
+	//	first=temp;
+	//	second="： ";
+	//	m_pmainwnd->TextOut(from,RGB(0,0,255));
+	//	//m_pmainwnd->TextOut(first,RGB(0,0,0));
+	//	//m_pmainwnd->TextOut(second,RGB(0,0,0));
+	//	m_pmainwnd->TextOut(": ", RGB(0, 0, 0));
+	//	m_pmainwnd->TextOut(text,crf);
+	//	m_pmainwnd->TextOut("\r\n",crf);
+	//}
 }

@@ -101,7 +101,7 @@ void CUDPServer::OnLine(SOCKADDR_IN * psa)
 	SendListToNew(*p);
 	m_pmainwnd->AddItemOfList(p->m_User,p->m_IP);
 	m_pmainwnd->Message(p->m_User);
-	m_pmainwnd->MessageReturn("风尘仆仆地推门而入");
+	m_pmainwnd->MessageReturn(" 上线!");
 }
 
 
@@ -123,7 +123,7 @@ void CUDPServer::OffLine(SOCKADDR_IN * psa)
 		}
 	}
 	m_pmainwnd->Message(m_pMsg->m_From);
-	m_pmainwnd->MessageReturn("静静地离开了，孤单的背影显得格外潇洒");
+	m_pmainwnd->MessageReturn(" 下线!");
 }
 
 //通知所有的客户端
@@ -184,43 +184,48 @@ void CUDPServer::SevverShutDown()
 
 void CUDPServer::Talk()
 {
-	//通知客户端
+	// m通知所有客户端,给他们发送当前服务器收到的这条消息
 	UpdateAllClients();
+
 	//服务器显示
-	CString temp,first,second;
+	//CString temp,first,second;
 	CString from = m_pMsg->m_From;
 	CString to = m_pMsg->m_To;
 	CString text = m_pMsg->m_Text;    //  m用户在输入框中的消息内容
-	int type = m_pMsg->m_Type;    // m沟通类型
+	//int type = m_pMsg->m_Type;    // m沟通类型
 
-	if(to.IsEmpty()) to = "所有人";
-	if(type > 32 || type < 0)
-		return;
-	temp.LoadString(IDS_TALK0 + type);	// m载入对应 type 的“表情字符”
-	int i=temp.Find(",");
-	if(i!=-1){
-		first=temp.Left(i);
-		if(i!=temp.GetLength()-1){
-			second=temp.Mid(i+1);
-			second+="：";
-		}
-		else{
-			second="：";
-		}
-		m_pmainwnd->Message(from);
-		//m_pmainwnd->Message(first);   // m表情字
-		m_pmainwnd->Message("告诉");  
-		m_pmainwnd->Message(to);
-		//m_pmainwnd->Message(second);    // m表情字
-		m_pmainwnd->MessageReturn(text);
-	}
-	else{
-		first=temp;
-		second="： ";
-		m_pmainwnd->Message(from);
-		//m_pmainwnd->Message(first);
-		//m_pmainwnd->Message(second);
-		m_pmainwnd->Message(": ");
-		m_pmainwnd->MessageReturn(text);
-	}
+	m_pmainwnd->Message(from);
+	m_pmainwnd->Message(": ");
+	m_pmainwnd->MessageReturn(text);
+
+	//if(to.IsEmpty()) to = "所有人";
+	//if(type > 32 || type < 0)
+	//	return;
+	//temp.LoadString(IDS_TALK0 + type);	// m载入对应 type 的“表情字符”
+	//int i=temp.Find(",");
+	//if(i!=-1){
+	//	first=temp.Left(i);
+	//	if(i!=temp.GetLength()-1){
+	//		second=temp.Mid(i+1);
+	//		second+="：";
+	//	}
+	//	else{
+	//		second="：";
+	//	}
+	//	m_pmainwnd->Message(from);
+	//	//m_pmainwnd->Message(first);   // m表情字
+	//	m_pmainwnd->Message("告诉");  
+	//	m_pmainwnd->Message(to);
+	//	//m_pmainwnd->Message(second);    // m表情字
+	//	m_pmainwnd->MessageReturn(text);
+	//}
+	//else{
+	//	first=temp;
+	//	second="： ";
+	//	m_pmainwnd->Message(from);
+	//	//m_pmainwnd->Message(first);
+	//	//m_pmainwnd->Message(second);
+	//	m_pmainwnd->Message(": ");
+	//	m_pmainwnd->MessageReturn(text);
+	//}
 }
