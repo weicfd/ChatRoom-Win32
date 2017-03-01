@@ -74,7 +74,7 @@ void CUDPClient::ReceiveProc()
 			ServerShutDown();
 			break;
 		default:
-			if (mi.m_Type>=0)//正常的交谈
+			if (mi.m_Type == 1)//正常的交谈
 			{
 				Talk();
 			}
@@ -141,9 +141,8 @@ void CUDPClient::Talk()
 	//if (from != m_name&&to != m_name && mi.m_Secret)
 	// 如果要添加群发功能，可以删掉这句，然后在服务器端维护一个 target group，由服务器只给目标用户发消息
 	// 目标客户端就直接显示出来
-	if(to == "") to = "所有人";
-	if( (from != m_name&&to != m_name) || to!="所有人" )
-		return;  //m这是别人的信息你不要管
+	//if( (from != m_name&&to != m_name) || to!="" )  // "" -- all 
+	//	return;  //m这是别人的信息你不要管
 
 	//if(from != m_name&&to != m_name && m_pmainwnd->m_bFilter)
 	//	return;//过滤不属于自己的消息

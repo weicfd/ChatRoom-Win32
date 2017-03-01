@@ -66,5 +66,6 @@ public:
 //	afx_msg void OnShowip();
 	afx_msg void OnLvnItemchangedUserlist(NMHDR *pNMHDR, LRESULT *pResult);
 //	afx_msg void OnBnClickedQuiet();
-	afx_msg void OnCbnSelchangeType();
+//	afx_msg void OnCbnSelchangeType();
+//	afx_msg void OnCbnSelchangeType();
 };

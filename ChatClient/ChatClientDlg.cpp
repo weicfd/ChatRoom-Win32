@@ -83,7 +83,7 @@ BEGIN_MESSAGE_MAP(CChatClientDlg, CDialog)
 //	ON_COMMAND(ID_SHOWIP, &CChatClientDlg::OnShowip)
 	ON_NOTIFY(LVN_ITEMCHANGED, IDC_USERLIST, &CChatClientDlg::OnLvnItemchangedUserlist) // m（消息，控件，处理函数）
 //	ON_BN_CLICKED(IDC_QUIET, &CChatClientDlg::OnBnClickedQuiet)
-ON_CBN_SELCHANGE(IDC_TYPE, &CChatClientDlg::OnCbnSelchangeType)
+//ON_CBN_SELCHANGE(IDC_TYPE, &CChatClientDlg::OnCbnSelchangeType)
 END_MESSAGE_MAP()
 
 
@@ -219,15 +219,15 @@ void CChatClientDlg::InitType()
 	pTo->SetCurSel(0);
 
 	// 沟通类型
-	CComboBox* pType = (CComboBox*)GetDlgItem(IDC_TYPE);
-	pType->ResetContent();
+	//CComboBox* pType = (CComboBox*)GetDlgItem(IDC_TYPE);
+	/*pType->ResetContent();
 	CString str;
 	for(int i = 0; i <= 32; i++)
 	{
 		str.LoadString(IDS_S0 + i);
 		pType->AddString(str);
 	}
-	pType->SetCurSel(0);
+	pType->SetCurSel(0);*/
 }
 
 //修改List扩展风格
@@ -332,7 +332,7 @@ void CChatClientDlg::OnBnClickedSend()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	CComboBox* pTo = (CComboBox*)GetDlgItem(IDC_CURRENT);  //m收件人
-	CComboBox* pType = (CComboBox*)GetDlgItem(IDC_TYPE);    // m沟通类型
+	//CComboBox* pType = (CComboBox*)GetDlgItem(IDC_TYPE);    // m沟通类型
 	CWnd* pText = (CWnd*)GetDlgItem(IDC_MSG);  // m消息内容
 	//CButton* pSecret = (CButton*)GetDlgItem(IDC_QUIET);  // 悄悄的
 
@@ -345,9 +345,10 @@ void CChatClientDlg::OnBnClickedSend()
 	strcpy(mi.m_To,(LPCTSTR)tmp);
 	tmp.Empty();
 	
-	pType->GetWindowText(tmp);
+	/*pType->GetWindowText(tmp);
 	mi.m_Type = pType->FindString(0, tmp);
-	tmp.Empty();
+	tmp.Empty();*/
+	mi.m_Type = 1;   // m正常谈话
 	
 	pText->GetWindowText(tmp);
 	strcpy(mi.m_Text,(LPCTSTR)tmp);
@@ -505,7 +506,8 @@ void CChatClientDlg::OnLvnItemchangedUserlist(NMHDR *pNMHDR, LRESULT *pResult)
 //}
 
 
-void CChatClientDlg::OnCbnSelchangeType()
-{
-	// TODO: Add your control notification handler code here
-}
+
+//void CChatClientDlg::OnCbnSelchangeType()
+//{
+//	// TODO: Add your control notification handler code here
+//}

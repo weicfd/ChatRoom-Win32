@@ -62,7 +62,7 @@ void CUDPServer::ListenProc()
 			OffLine(&clientaddr);
 			break;
 		default:
-			if (m_pMsg->m_Type>=0)//正常的交谈
+			if (m_pMsg->m_Type == 1)//正常的交谈
 			{
 				Talk();
 			}
@@ -134,8 +134,8 @@ void CUDPServer::UpdateAllClients()
 		USER_INFO * pui = (USER_INFO *)m_UsesrList.GetNext(pos);
 		if (pui != NULL)
 		{
-			strcpy(m_pMsg->m_IP,pui->m_IP);//传送给客户端IP
-			SendMsg( pui);
+			strcpy(m_pMsg->m_IP,pui->m_IP);// m传送给客户端IP, sendMsg()会把 m_pMsg 消息发出去
+			SendMsg(pui);
 		}
 	}
 }
