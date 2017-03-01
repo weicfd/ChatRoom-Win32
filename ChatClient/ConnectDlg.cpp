@@ -15,7 +15,7 @@ CConnectDlg::CConnectDlg(CWnd* pParent /*=NULL*/)
 {
 	m_strName = "";
 	m_strIP = "";
-	m_image = 0;
+	//m_image = 0;
 }
 
 CConnectDlg::~CConnectDlg()

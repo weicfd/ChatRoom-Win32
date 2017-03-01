@@ -16,7 +16,7 @@ public:
 public://用于返回
 	CString m_strName;//用户名
 	CString m_strIP;//服务器端的IP
-	int m_image;//选择的图标
+	//int m_image;//选择的图标
 
 private://内部使用
 	//CImageList m_imgList;//图像列表

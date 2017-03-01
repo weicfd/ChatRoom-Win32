@@ -160,7 +160,7 @@ void CUDPServer::SendListToNew(USER_INFO &ui)  // ui 为新用户
 
 void CUDPServer::SendMsg(USER_INFO * pui)
 {
-	sendto(m_sUDP,(char *)m_pMsg,sizeof(MSG_INFO),0,(SOCKADDR*)&pui->m_SA,sizeof(SOCKADDR));
+	sendto(m_sUDP,(char *)m_pMsg,sizeof(MSG_INFO),0,(SOCKADDR*)&pui->m_SA,sizeof(SOCKADDR));  // m客户端收到这条消息
 }
 
 void CUDPServer::SevverShutDown()
