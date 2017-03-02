@@ -25,7 +25,7 @@ BOOL CUDPServer::StartListen()
 	SOCKADDR_IN local;
 	local.sin_family = AF_INET;
 	local.sin_addr.s_addr = INADDR_ANY;
-	local.sin_port = htons(6000);
+	local.sin_port = htons(20000);
 
 	int i = bind (m_sUDP, (SOCKADDR *)&local, sizeof(local) );
 	CreateThread(NULL,0,CUDPServer::WorkProc,this,0,NULL);

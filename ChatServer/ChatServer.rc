@@ -12,6 +12,7 @@
 #endif
 #include "afxres.h"
 
+
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
@@ -122,13 +123,13 @@ BEGIN
     BEGIN
         BLOCK "080403a8"
         BEGIN
-            VALUE "CompanyName", "TODO: <公司名>"
-            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "CompanyName", "Daisy & Marti"
+            VALUE "FileDescription", "Chat Room Server"
             VALUE "FileVersion", "1.0.0.1"
-            VALUE "InternalName", "ChatServer.exe"
-            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
-            VALUE "OriginalFilename", "ChatServer.exe"
-            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "InternalName", "DchatM_Server.exe"
+            VALUE "LegalCopyright", "Daisy & Marti. 保留所有权利。"
+            VALUE "OriginalFilename", "DchatM_Server.exe"
+            VALUE "ProductName", "DchatM_Server"
             VALUE "ProductVersion", "1.0.0.1"
         END
     END
@@ -199,51 +200,6 @@ STRINGTABLE
 BEGIN
     IDS_ABOUTBOX            "关于 DchatM (&A)..."
     IDP_SOCKETS_INIT_FAILED "Windows 套接字初始化失败。"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_TALK0               "与,说"
-    IDS_TALK1               "冲,叫"
-    IDS_TALK2               "亲了亲 , 的脸颊"
-    IDS_TALK3               "轻轻地拥抱着,"
-    IDS_TALK4               "朝,横眉竖目道"
-    IDS_TALK5               "与,眨巴了两下眼睛"
-    IDS_TALK6               "轻轻地推了推,的胳膊"
-    IDS_TALK7               "对,点了点头"
-    IDS_TALK8               "问,道"
-    IDS_TALK9               "傻兮兮的朝,笑笑"
-    IDS_TALK10              "对准,就是一拳"
-    IDS_TALK11              "凌空一腿踢在,脑袋上"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_TALK12              "拉着,的手语气心长地说"
-    IDS_TALK13              "狠狠地掴了,几个耳光"
-    IDS_TALK14              "毕恭毕敬地向,弯腰鞠躬"
-    IDS_TALK15              "感到十二分的歉意，低声对,说"
-    IDS_TALK16              "很赞同,"
-    IDS_TALK17              "惊讶的对,吐了吐舌头"
-    IDS_TALK18              "对,摇了摇头"
-    IDS_TALK19              "张大嘴巴，打了个哈欠"
-    IDS_TALK20              "对,微微一笑"
-    IDS_TALK21              "紧紧的握住,的手"
-    IDS_TALK22              "向,挥手"
-    IDS_TALK23              "耸耸双肩"
-    IDS_TALK24              "忍不住放声大哭"
-    IDS_TALK25              "双手捂着脸，呜呜咽咽的"
-    IDS_TALK26              "拍拍,的肩膀，双眼关切的说"
-    IDS_TALK27              "气鼓鼓的嘟嘴道"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_TALK28              "把胸脯拍得噼啪响"
-    IDS_TALK29              "依依不舍地拉着,的衣角"
-    IDS_TALK30              "用深情的眼神，痴痴地看着,"
-    IDS_TALK31              "抓抓头皮露出迷惑的神情"
-    IDS_TALK32              "悄悄地对,耳语"
 END
 
 #endif    // Chinese (Simplified, PRC) resources

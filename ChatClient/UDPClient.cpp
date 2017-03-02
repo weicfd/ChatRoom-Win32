@@ -2,7 +2,7 @@
 #include "UDPClient.h"
 #include "ChatClientDlg.h"
 #define MAX_LENGTH (8*1024)
-#define PORT 6000
+#define PORT 20000
 
 char IP[20] = {0};  // m用于存放用户 连接到的 服务器的IP
 MSG_INFO mi;  // m一个消息类型变量，用于收发消息
