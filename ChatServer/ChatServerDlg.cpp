@@ -218,11 +218,7 @@ void CChatServerDlg::InitList()
 		lvc.fmt = LVCFMT_CENTER;
 		pList->InsertColumn(i, &lvc);//添加一列
 	}
-	//初始化图像列表
-	//m_imgList.Create(IDB_IMAGE, 16, 1, RGB(0, 255, 0));
-	//HIMAGELIST him = m_imgList.m_hImageList;
-	//::SendMessage(GetDlgItem(IDC_USERLIST)->m_hWnd,LVM_SETIMAGELIST,(WPARAM)LVSIL_SMALL, (LPARAM)him);
-	//ImageList_SetBkColor(him,CLR_NONE);
+	
 }
 
 //修改风格
@@ -258,7 +254,6 @@ void CChatServerDlg::AddItemOfList(char* name, char* IP)
 	CListCtrl * pList = (CListCtrl *)GetDlgItem(IDC_USERLIST);
 	lvi.mask = LVIF_TEXT | LVIF_PARAM;
 	lvi.iItem = pList->GetItemCount();
-	//lvi.iImage = i;
 	lvi.iSubItem = 0;
 	lvi.pszText = name;
 	lvi.cchTextMax = 64;

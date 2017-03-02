@@ -15,7 +15,6 @@ CConnectDlg::CConnectDlg(CWnd* pParent /*=NULL*/)
 {
 	m_strName = "";
 	m_strIP = "";
-	//m_image = 0;
 }
 
 CConnectDlg::~CConnectDlg()
@@ -41,7 +40,6 @@ void CConnectDlg::OnBnClickedOk()
 	// TODO: 在此添加控件通知处理程序代码
 	CEdit* pEdit = (CEdit*)GetDlgItem(IDC_NAME);
 	pEdit->GetWindowText(m_strName);
-	//m_image = m_comboType.GetCurSel();
 	((CIPAddressCtrl*)GetDlgItem(IDC_IP))->GetWindowText(m_strIP);  // m_strIP 服务器地址
 
 	if (m_strName == "不能重名!" ||m_strName == "")
@@ -55,43 +53,13 @@ void CConnectDlg::OnBnClickedOk()
 		pEdit->SetWindowText("");
 		return;
 	}
-	OnOK();
+	OnOK();     // m  主窗口检测到这个状态，就会连接服务器
 }
 
 BOOL CConnectDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	//初始化图像列表
-	/*RECT rc;
-	COMBOBOXEXITEM ci;
-	SetRect(&rc,134,74,219,180);
-	m_imgList.Create(IDB_IMAGE, 16, 1, RGB(0, 255, 0));
-	HIMAGELIST him = m_imgList.m_hImageList;
-	m_comboType.Create(CBS_DROPDOWNLIST|WS_CHILD|CBS_AUTOHSCROLL|WS_VISIBLE,rc,this,IDC_TYPE);
-	m_comboType.SetImageList(&m_imgList);
-	ImageList_SetBkColor(him,CLR_NONE);*/
-
-	//给m_strArray添加字符串
-	/*m_strArray.Add("男孩1");
-	m_strArray.Add("女孩");
-	m_strArray.Add("男孩2");
-	m_strArray.Add("尖鼻男");
-	m_strArray.Add("羊");
-	m_strArray.Add("鸡");
-	m_strArray.Add("企鹅");*/
-
-	//for (int i =0;i<7;i++)//添加图像
-	//{
-	//	ci.mask = CBEIF_IMAGE|CBEIF_TEXT|CBEIF_SELECTEDIMAGE;
-	//	ci.iImage = i;
-	//	ci.iSelectedImage =i;
-	//	ci.pszText = m_strArray.GetAt(i);
-	//	ci.iItem = i;
-	//	m_comboType.InsertItem(&ci);
-	//}
-
-	//m_comboType.SetCurSel(0); // 重设备选头像
 
 	((CEdit *)GetDlgItem(IDC_NAME))->SetWindowText("不能重名!");  // m重设默认显示的用户名
 	m_bIsChange = false;

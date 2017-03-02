@@ -27,7 +27,6 @@ void CUDPClient::Connect(LPCTSTR name,LPCTSTR ip)
 	strcpy(IP,ip);
 	strcpy(mi.m_From,name);
 	strcpy(m_name,name);
-	//mi.m_Image = image;
 	mi.m_Type = -1;//上线  ，  m用户在线状态
 	SendMsg(mi);
 	CreateThread(NULL,0,CUDPClient::WorkThread,this,0,NULL);
@@ -159,9 +158,7 @@ void CUDPClient::Talk()
 	if( from != m_name && to != m_name && to!="" )   
 		return;  //m这是别人的信息你不要管
 
-	//if(from != m_name&&to != m_name && m_pmainwnd->m_bFilter)
-	//	return;//过滤不属于自己的消息
-
+	
 	CString message = from + ": " + text + "\r\n";
 	m_pmainwnd->TextOut((LPCTSTR)message, crf);
 
@@ -171,39 +168,7 @@ void CUDPClient::Talk()
 	m_pmainwnd->TextOut((LPCTSTR)text, crf);
 	m_pmainwnd->TextOut((LPCTSTR)"\r\n", crf);
 */
-	//CString temp,first,second;
-	//if(type > 32 || type < 0)    
-	//	return;  
-	//temp.LoadString(IDS_TALK0 + type);	
-	//int i=temp.Find(",");
-	//if(i != -1){
-	//	first = temp.Left(i);
-	//	if(i != temp.GetLength() - 1){
-	//		second = temp.Mid(i + 1);
-	//		second += "：";
-	//	}
-	//	else{
-	//		second="：";
-	//	}
-	//	if(to == "") to = "所有人";
-	//	m_pmainwnd->TextOut((LPCTSTR)from, RGB(0,0,255));
-	//	//m_pmainwnd->TextOut((LPCTSTR)first, RGB(0,0,0));    // m表情字
-	//	m_pmainwnd->TextOut((LPCTSTR)"告诉", RGB(0, 0, 0));
-	//	m_pmainwnd->TextOut((LPCTSTR)to, RGB(0,0,255));
-	//	//m_pmainwnd->TextOut((LPCTSTR)second, RGB(0,0,0));    // m表情字
-	//	m_pmainwnd->TextOut((LPCTSTR)text,crf);
-	//	m_pmainwnd->TextOut((LPCTSTR)"\r\n",crf);
-	//}
-	//else{
-	//	first=temp;
-	//	second="： ";
-	//	m_pmainwnd->TextOut(from,RGB(0,0,255));
-	//	//m_pmainwnd->TextOut(first,RGB(0,0,0));
-	//	//m_pmainwnd->TextOut(second,RGB(0,0,0));
-	//	m_pmainwnd->TextOut(": ", RGB(0, 0, 0));
-	//	m_pmainwnd->TextOut(text,crf);
-	//	m_pmainwnd->TextOut("\r\n",crf);
-	//}
+	
 }
 
 void CUDPClient::Hide()

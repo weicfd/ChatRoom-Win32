@@ -23,7 +23,6 @@ public:
 
 //LIST控件
 public:
-	//CImageList m_imgList;//图像列表，显示在线用户的图标
 	void RemoveItemOfList(char* name);//移除
 	void RemoveItemOfBox(char* name); // 移除下拉框
 	void AddItemOfList(char* name, char* IP);//添加
@@ -42,7 +41,6 @@ protected:
 public:
 	COLORREF crf;//字体颜色
     BOOL m_bConnected;//是否连接
-	//BOOL m_bFilter;
 	CUDPClient *m_pUDPClient;
 	CString m_strName;
 
@@ -57,17 +55,12 @@ public:
 	afx_msg void OnClose();
 	afx_msg void OnBnClickedSend();
 	afx_msg void OnConnect();
-//	afx_msg void OnBnClickedFilter();//直接改变本地变量，而QUIET则是发送的时候改变
 	afx_msg void OnDisconnect();
 	afx_msg void OnBnClickedColorselect();
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 	afx_msg void OnInitMenuPopup(CMenu* pPopupMenu, UINT nIndex, BOOL bSysMenu);
 	afx_msg void OnDestroy();
 	afx_msg void OnExit();
-//	afx_msg void OnShowip();
 	afx_msg void OnLvnItemchangedUserlist(NMHDR *pNMHDR, LRESULT *pResult);
-//	afx_msg void OnBnClickedQuiet();
-//	afx_msg void OnCbnSelchangeType();
-//	afx_msg void OnCbnSelchangeType();
 	afx_msg void OnEnChangeChatview();
 };

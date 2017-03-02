@@ -73,18 +73,14 @@ BEGIN_MESSAGE_MAP(CChatClientDlg, CDialog)
 	ON_WM_CLOSE()
 	ON_BN_CLICKED(IDC_SEND, &CChatClientDlg::OnBnClickedSend)
 	ON_COMMAND(ID_CONNECT, &CChatClientDlg::OnConnect)
-//	ON_BN_CLICKED(IDC_FILTER, &CChatClientDlg::OnBnClickedFilter)
 	ON_COMMAND(ID_DISCONNECT, &CChatClientDlg::OnDisconnect)
 	ON_BN_CLICKED(IDC_COLORSELECT, &CChatClientDlg::OnBnClickedColorselect)
 	ON_WM_CTLCOLOR()
 	ON_WM_INITMENUPOPUP()
 	ON_WM_DESTROY()
 	ON_COMMAND(ID_EXIT, &CChatClientDlg::OnExit)   // m菜单 -> 退出
-//	ON_COMMAND(ID_SHOWIP, &CChatClientDlg::OnShowip)
 	ON_NOTIFY(LVN_ITEMCHANGED, IDC_USERLIST, &CChatClientDlg::OnLvnItemchangedUserlist) // m（消息，控件，处理函数）
-//	ON_BN_CLICKED(IDC_QUIET, &CChatClientDlg::OnBnClickedQuiet)
-//ON_CBN_SELCHANGE(IDC_TYPE, &CChatClientDlg::OnCbnSelchangeType)
-ON_EN_CHANGE(IDC_CHATVIEW, &CChatClientDlg::OnEnChangeChatview)
+	ON_EN_CHANGE(IDC_CHATVIEW, &CChatClientDlg::OnEnChangeChatview)
 END_MESSAGE_MAP()
 
 
@@ -106,6 +102,7 @@ BOOL CChatClientDlg::OnInitDialog()
 	}
 
 
+	// 图标菜单
 	CMenu* pSysMenu = GetSystemMenu(FALSE);
 	if (pSysMenu != NULL)
 	{
@@ -205,11 +202,6 @@ void CChatClientDlg::InitList()
 		lvc.fmt = LVCFMT_CENTER;
 		pList->InsertColumn(i, &lvc);//添加一列
 	}
-	//初始化图像列表
-	//m_imgList.Create(IDB_IMAGE, 16, 1, RGB(0, 255, 0));
-	//HIMAGELIST him = m_imgList.m_hImageList;
-	//::SendMessage(GetDlgItem(IDC_USERLIST)->m_hWnd,LVM_SETIMAGELIST,(WPARAM)LVSIL_SMALL,(LPARAM)him);
-	//ImageList_SetBkColor(him,CLR_NONE);
 }
 
 //初始化TYPE，依次添加STRING
@@ -219,16 +211,6 @@ void CChatClientDlg::InitType()
 	pTo->AddString("所有人");
 	pTo->SetCurSel(0);
 
-	// 沟通类型
-	//CComboBox* pType = (CComboBox*)GetDlgItem(IDC_TYPE);
-	/*pType->ResetContent();
-	CString str;
-	for(int i = 0; i <= 32; i++)
-	{
-		str.LoadString(IDS_S0 + i);
-		pType->AddString(str);
-	}
-	pType->SetCurSel(0);*/
 }
 
 //修改List扩展风格
@@ -273,7 +255,6 @@ void CChatClientDlg::AddItemOfList(char* name, char* IP)
 	CListCtrl * pList = (CListCtrl *)GetDlgItem(IDC_USERLIST);
 	lvi.mask = LVIF_TEXT | LVIF_PARAM;
 	lvi.iItem = pList->GetItemCount();
-	//lvi.iImage = i;
 	lvi.iSubItem = 0;
 	lvi.pszText = name;
 	lvi.cchTextMax = 64;
@@ -333,7 +314,7 @@ void CChatClientDlg::TextOut(LPCTSTR lpszMessage, COLORREF clr)
 
 	int len = pView->GetWindowTextLength();
 	//pView->SetSel(len, len);
-	pView->SetSel(0,0);
+	pView->SetSel(0,0);   // m新的信息显示在最上层
 
 	pView->SetSelectionCharFormat(cfm);
 	pView->ReplaceSel(lpszMessage);
@@ -344,10 +325,8 @@ void CChatClientDlg::OnBnClickedSend()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	CComboBox* pTo = (CComboBox*)GetDlgItem(IDC_CURRENT);  //m收件人
-	//CComboBox* pType = (CComboBox*)GetDlgItem(IDC_TYPE);    // m沟通类型
 	CWnd* pText = (CWnd*)GetDlgItem(IDC_MSG);  // m消息内容
 	CButton* pHide = (CButton*)GetDlgItem(IDC_HIDE);  // m是否隐身
-	//CButton* pSecret = (CButton*)GetDlgItem(IDC_QUIET);  // 悄悄的
 
 	MSG_INFO mi;   // 为要发送的消息体
 	CString tmp;
@@ -358,9 +337,6 @@ void CChatClientDlg::OnBnClickedSend()
 	strcpy(mi.m_To,(LPCTSTR)tmp);
 	tmp.Empty();
 	
-	/*pType->GetWindowText(tmp);
-	mi.m_Type = pType->FindString(0, tmp);
-	tmp.Empty();*/
 	if (IsDlgButtonChecked(IDC_HIDE))
 	{
 		mi.m_Type = 0;  //m隐身
@@ -374,7 +350,6 @@ void CChatClientDlg::OnBnClickedSend()
 	strcpy(mi.m_Text,(LPCTSTR)tmp);
 	
 	if(tmp.IsEmpty()) return;  // 消息内容为空，则不发送
-	//mi.m_Secret = pSecret->GetCheck();
 	
 	mi.m_Color = crf;
 	pText->SetWindowText(_TEXT(""));
@@ -394,11 +369,6 @@ void CChatClientDlg::OnConnect()
 	}
 }
 
-//void CChatClientDlg::OnBnClickedFilter()
-//{
-//	CButton* pFilter = (CButton*)GetDlgItem(IDC_FILTER);
-//	m_bFilter = pFilter->GetCheck();
-//}
 
 
 void CChatClientDlg::OnDisconnect()
@@ -474,7 +444,7 @@ void CChatClientDlg::OnClose()
 	OnDisconnect();  // m断开连接(如果这句在if里面会有空指针报错)
 	if(MessageBox("确定要退出！","通知",MB_OKCANCEL|MB_ICONINFORMATION) == IDOK)
 	{
-		CDialog::OnClose();  // m会自动调用 OnDestroy 吧
+		CDialog::OnClose();  // m会自动调用 OnDestroy 
 	}
 }
 
@@ -483,33 +453,6 @@ void CChatClientDlg::OnExit()
 	PostMessage(WM_CLOSE,0,0);
 }
 
-//void CChatClientDlg::OnShowip()
-//{
-//	PHOSTENT hostinfo;
-//	char hostname[255];
-//	CString str,str1,str2;
-//	LPSTR ip;
-//	if(gethostname(hostname, sizeof(hostname)) != 0)    //获得本地主机名
-//	{
-//		MessageBox("获取主机名出错！","警告",MB_OK | MB_ICONWARNING);
-//		return;
-//	}
-//	if((hostinfo = gethostbyname(hostname)) == NULL)    //获得本地IP地址
-//	{
-//		MessageBox("获取本机IP出错！","警告",MB_OK | MB_ICONWARNING);
-//		return;
-//	}
-//	str.Format("主机名：%s\n",hostname);
-//	while(*(hostinfo->h_addr_list) != NULL)        //输出IP地址
-//	{
-//		ip = inet_ntoa(*(struct in_addr *) *hostinfo->h_addr_list);
-//		str1.Format("ip 为 : %s\n", ip);
-//		str2+=str1;
-//		hostinfo->h_addr_list++;
-//	}
-//	str+=str2;
-//	MessageBox(str,"IP地址",0);
-//}
 
 
 void CChatClientDlg::OnLvnItemchangedUserlist(NMHDR *pNMHDR, LRESULT *pResult)
@@ -519,18 +462,6 @@ void CChatClientDlg::OnLvnItemchangedUserlist(NMHDR *pNMHDR, LRESULT *pResult)
 	*pResult = 0;
 }
 
-
-//void CChatClientDlg::OnBnClickedQuiet()
-//{
-//	// TODO: Add your control notification handler code here
-//}
-
-
-
-//void CChatClientDlg::OnCbnSelchangeType()
-//{
-//	// TODO: Add your control notification handler code here
-//}
 
 
 void CChatClientDlg::OnEnChangeChatview()
