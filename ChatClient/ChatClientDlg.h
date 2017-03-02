@@ -25,6 +25,7 @@ public:
 public:
 	//CImageList m_imgList;//图像列表，显示在线用户的图标
 	void RemoveItemOfList(char* name);//移除
+	void RemoveItemOfBox(char* name); // 移除下拉框
 	void AddItemOfList(char* name, char* IP);//添加
 	void AddExStyleOfList(DWORD dwNewStyle);//给USERLIST添加风格
 	void InitList();//初始化USERLIST

@@ -111,14 +111,16 @@ void CUDPClient::OnLine()
 //下线
 void CUDPClient::OffLine()
 {
-	if (strcmp(mi.m_From , m_name)==0)
+	if (strcmp(mi.m_From , m_name)==0)  // m自己下线
 	{
 		m_pmainwnd->m_bConnected = FALSE;
 		((CListCtrl *)m_pmainwnd->GetDlgItem(IDC_USERLIST))->DeleteAllItems();
 	}
-	else
+	else  
 	{
 		m_pmainwnd->RemoveItemOfList(mi.m_From);
+		// m别人下线，在下拉框中删除下线用户
+		m_pmainwnd->RemoveItemOfBox(mi.m_From);
 	}
 	m_pmainwnd->TextOut(mi.m_From, RGB(0,0,255));
 	m_pmainwnd->TextOut(_TEXT(" 下线!\r\n"),RGB(255,0,0));

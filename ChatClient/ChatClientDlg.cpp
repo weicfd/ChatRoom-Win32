@@ -256,6 +256,16 @@ void CChatClientDlg::RemoveItemOfList(char* name)
 	}
 }
 
+void CChatClientDlg::RemoveItemOfBox(char * name)
+{
+	CComboBox* pCurr = (CComboBox*)GetDlgItem(IDC_CURRENT);
+	int pos = pCurr->FindStringExact(-1, (LPCTSTR)name);
+	if (pos>=0)
+	{
+		pCurr->DeleteString(pos);  // m删除找到的用户名
+	}
+}
+
 //为LIST添加一行, name为用户名，IP地址
 void CChatClientDlg::AddItemOfList(char* name, char* IP)
 {
