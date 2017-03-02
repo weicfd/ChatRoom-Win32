@@ -101,8 +101,13 @@ void CUDPClient::SendMsg(MSG_INFO &msg_info)
 //上线
 void CUDPClient::OnLine()
 {
-    m_pmainwnd->TextOut(mi.m_From, RGB(0,0,255));
-	m_pmainwnd->TextOut(_TEXT(" 上线!\r\n"),RGB(255,0,0));
+ /*   m_pmainwnd->TextOut(mi.m_From, RGB(0,0,255));
+	m_pmainwnd->TextOut(_TEXT(" 上线!\r\n"),RGB(255,0,0));*/
+
+	CString tmp = "  上线!\r\n";
+	CString message = mi.m_From + tmp;
+	m_pmainwnd->TextOut(message, RGB(0, 255, 0));   // green
+
 	m_pmainwnd->m_bConnected = TRUE;
 	m_pmainwnd->AddItemOfList(mi.m_From,mi.m_IP);
 }
@@ -122,14 +127,19 @@ void CUDPClient::OffLine()
 		// m别人下线，在下拉框中删除下线用户
 		m_pmainwnd->RemoveItemOfBox(mi.m_From);
 	}
+/*
 	m_pmainwnd->TextOut(mi.m_From, RGB(0,0,255));
 	m_pmainwnd->TextOut(_TEXT(" 下线!\r\n"),RGB(255,0,0));
+*/
+	CString tmp = "  下线!\r\n";
+	CString message = mi.m_From + tmp;
+	m_pmainwnd->TextOut(message, RGB(255, 0, 0));  // red
 }
 
 //服务器关闭
 void CUDPClient::ServerShutDown()
 {
-	m_pmainwnd->TextOut(_T("系统：服务器已关闭!"),RGB(0,0,0));
+	m_pmainwnd->TextOut(_T("系统： 服务器已关闭!\r\n"),RGB(255,0,0));   // red
 	m_pmainwnd->m_bConnected = FALSE;
 	((CListCtrl *)m_pmainwnd->GetDlgItem(IDC_USERLIST))->DeleteAllItems();
 }
@@ -152,11 +162,15 @@ void CUDPClient::Talk()
 	//if(from != m_name&&to != m_name && m_pmainwnd->m_bFilter)
 	//	return;//过滤不属于自己的消息
 
+	CString message = from + ": " + text + "\r\n";
+	m_pmainwnd->TextOut((LPCTSTR)message, crf);
+
+/*
 	m_pmainwnd->TextOut((LPCTSTR)from, RGB(0, 0, 255));
 	m_pmainwnd->TextOut(": ", RGB(0, 0, 0));
 	m_pmainwnd->TextOut((LPCTSTR)text, crf);
 	m_pmainwnd->TextOut((LPCTSTR)"\r\n", crf);
-
+*/
 	//CString temp,first,second;
 	//if(type > 32 || type < 0)    
 	//	return;  
@@ -202,8 +216,12 @@ void CUDPClient::Hide()
 	if (from != m_name && to != m_name && to != "")
 		return;  //m这是别人的信息你不要管
 
-	m_pmainwnd->TextOut((LPCTSTR)"匿名者", RGB(0, 0, 255));
-	m_pmainwnd->TextOut(": ", RGB(0, 0, 0));
-	m_pmainwnd->TextOut((LPCTSTR)text, crf);
-	m_pmainwnd->TextOut((LPCTSTR)"\r\n", crf);
+	CString a_from = "匿名者";
+	CString message = a_from + ": " + text + "\r\n";
+	m_pmainwnd->TextOut((LPCTSTR)message, crf);
+
+	//m_pmainwnd->TextOut((LPCTSTR)"匿名者", RGB(0, 0, 255));
+	//m_pmainwnd->TextOut(": ", RGB(0, 0, 0));
+	//m_pmainwnd->TextOut((LPCTSTR)text, crf);
+	//m_pmainwnd->TextOut((LPCTSTR)"\r\n", crf);
 }

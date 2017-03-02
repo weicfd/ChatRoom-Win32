@@ -332,7 +332,8 @@ void CChatClientDlg::TextOut(LPCTSTR lpszMessage, COLORREF clr)
 	cfm.yHeight   =   200;     
 
 	int len = pView->GetWindowTextLength();
-	pView->SetSel(len,len);
+	//pView->SetSel(len, len);
+	pView->SetSel(0,0);
 
 	pView->SetSelectionCharFormat(cfm);
 	pView->ReplaceSel(lpszMessage);
