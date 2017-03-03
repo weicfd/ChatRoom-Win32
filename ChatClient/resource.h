@@ -25,6 +25,8 @@
 #define IDC_TYPE                        1014
 #define IDC_NAME                        1014
 #define IDC_IP                          1016
+#define IDC_CHECK1                      1019
+#define IDC_HIDE                        1019
 #define ID_CONNECT                      32774
 #define ID_DISCONNECT                   32775
 #define ID_EXIT                         32776
@@ -101,9 +103,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        139
+#define _APS_NEXT_RESOURCE_VALUE        141
 #define _APS_NEXT_COMMAND_VALUE         32779
-#define _APS_NEXT_CONTROL_VALUE         1017
+#define _APS_NEXT_CONTROL_VALUE         1020
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

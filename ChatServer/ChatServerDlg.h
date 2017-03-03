@@ -24,22 +24,19 @@ protected:
 	HICON m_hIcon;
 
 public:
-	CImageList m_imgList;//图像列表
 	CTypedPtrList<CPtrList, CMessage*> m_lsMsg;//消息列表
 	CPtrList m_connectionList;//连接的客户机的列表
-	//CUDPServer UDPSocket(this);
 	CUDPServer UDPSocket;
 	// 操作函数
 public:
 	void MessageReturn(LPCTSTR lpszMessage);//显示消息(有换行)
 	void Message(LPCTSTR lpszMessage);//显示消息(没有换行)
-	void DeleteContents();//删除内容
 
 	//USERLIST的方法
 	void InitList();
 	void AddExStyleOfList(DWORD dwNewStyle);
 	void RemoveItemOfList(char* name);
-	void AddItemOfList(short i, char* name, char* text);
+	void AddItemOfList(char* name, char* IP);
 public:
 	// 生成的消息映射函数
 	virtual BOOL OnInitDialog();

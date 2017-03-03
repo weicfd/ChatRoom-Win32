@@ -74,6 +74,9 @@
     <Image Include="res\USER.bmp">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="..\..\earth.ico">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />

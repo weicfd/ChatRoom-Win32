@@ -143,6 +143,7 @@
     <None Include="res\ChatClient.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\earth.ico" />
     <Image Include="res\largeQQ.ico" />
     <Image Include="res\USER.bmp" />
   </ItemGroup>

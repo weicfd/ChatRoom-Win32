@@ -16,12 +16,10 @@ public:
 public://用于返回
 	CString m_strName;//用户名
 	CString m_strIP;//服务器端的IP
-	int m_image;//选择的图标
 
 private://内部使用
-	CImageList m_imgList;//图像列表
-	CComboBoxEx m_comboType;//要创建的图标选择框
-	CArray<LPSTR,LPSTR> m_strArray;
+	//CComboBoxEx m_comboType;//要创建的图标选择框
+	//CArray<LPSTR,LPSTR> m_strArray;
 	BOOL m_bIsChange;
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持

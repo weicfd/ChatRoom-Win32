@@ -2,6 +2,7 @@
 //
 #include "resource.h"
 
+
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -68,31 +69,29 @@ END
 
 IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "关于 ChatClient"
+CAPTION "关于 DchatM"
 FONT 9, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    ICON            128,IDC_STATIC,14,14,21,20
-    LTEXT           "ChatClient，1.0 版",IDC_STATIC,42,14,114,8,SS_NOPREFIX
-    LTEXT           "Copyright (C) 2010",IDC_STATIC,42,26,114,8
+    LTEXT           "DchatM，1.0 版",IDC_STATIC,51,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2017",IDC_STATIC,50,26,114,8
     DEFPUSHBUTTON   "确定",IDOK,113,41,50,14,WS_GROUP
+    ICON            IDI_LARGEQQ,IDC_STATIC,24,16,20,20
 END
 
 IDD_CHATCLIENT_DIALOG DIALOGEX 0, 0, 334, 226
-STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
-CAPTION "局域网聊天工具1.0(客户端)"
+CAPTION "DchatM 客户端"
 MENU IDR_MENU
-FONT 9, "MS Shell Dlg", 0, 0, 0x1
+FONT 9, "微软雅黑", 400, 0, 0x86
 BEGIN
-    CONTROL         "",IDC_USERLIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,90,138,WS_EX_DLGMODALFRAME | WS_EX_STATICEDGE
-    CONTROL         "",IDC_CHATVIEW,"RichEdit20A",ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | WS_BORDER | WS_VSCROLL | WS_TABSTOP,114,6,205,139
-    LTEXT           "聊天对象：",IDC_STATIC,21,161,43,8,0,WS_EX_RIGHT
-    LTEXT           "信息：",IDC_STATIC,42,182,22,8,0,WS_EX_RIGHT
-    EDITTEXT        IDC_MSG,67,181,190,30,ES_MULTILINE | WS_VSCROLL
-    PUSHBUTTON      "颜色...",IDC_COLORSELECT,278,158,29,14
-    PUSHBUTTON      "发送",IDC_SEND,278,188,29,14
-    COMBOBOX        IDC_CURRENT,67,159,50,48,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
-    COMBOBOX        IDC_TYPE,131,159,50,48,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_USERLIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,90,212,WS_EX_DLGMODALFRAME | WS_EX_STATICEDGE
+    CONTROL         "",IDC_CHATVIEW,"RichEdit20A",ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | WS_BORDER | WS_VSCROLL | WS_TABSTOP,107,6,220,139
+    EDITTEXT        IDC_MSG,107,168,220,51,ES_MULTILINE | WS_VSCROLL
+    PUSHBUTTON      "字体颜色",IDC_COLORSELECT,256,149,38,14
+    PUSHBUTTON      "发送",IDC_SEND,298,149,29,14
+    COMBOBOX        IDC_CURRENT,106,149,50,48,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "隐身",IDC_HIDE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,162,152,30,10
 END
 
 IDD_CONNECTSET DIALOGEX 0, 0, 200, 129
@@ -131,13 +130,13 @@ BEGIN
     BEGIN
         BLOCK "080403a8"
         BEGIN
-            VALUE "CompanyName", "TODO: <公司名>"
-            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "CompanyName", "Daisy & Marti"
+            VALUE "FileDescription", "Chat Room Client"
             VALUE "FileVersion", "1.0.0.1"
-            VALUE "InternalName", "ChatClient.exe"
-            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
-            VALUE "OriginalFilename", "ChatClient.exe"
-            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "InternalName", "DchatM_Client.exe"
+            VALUE "LegalCopyright", "Daisy & Marti. 保留所有权利。"
+            VALUE "OriginalFilename", "DchatM_Client.exe"
+            VALUE "ProductName", "DchatM_Client"
             VALUE "ProductVersion", "1.0.0.1"
         END
     END
@@ -214,7 +213,7 @@ IDB_IMAGE               BITMAP                  "res\\USER.bmp"
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_LARGEQQ             ICON                    "res\\largeQQ.ico"
+IDI_LARGEQQ             ICON                    "C:\\Users\\lorrainepark\\Desktop\\LAB\\DL\\easy-lan-chat-master\\earth.ico"
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -232,6 +231,11 @@ BEGIN
     0
 END
 
+IDD_ABOUTBOX AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -240,101 +244,11 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_ABOUTBOX            "关于 ChatClient(&A)..."
+    IDS_ABOUTBOX            "关于 DchatM (&A)..."
     IDS_SOCKETS_INIT_FAILED "Windows 套接字初始化失败。"
     IDS_SERVERRESET         "服务器可能已经关闭!"
     IDS_CONNECTIONCLOSED    "关闭连接"
     IDS_RETRYCONNECT        "连接服务器失败\n再试一次?"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_TALK0               "与,说"
-    IDS_TALK1               "冲,叫"
-    IDS_TALK2               "亲了亲 , 的脸颊"
-    IDS_TALK3               "轻轻地拥抱着,"
-    IDS_TALK4               "朝,横眉竖目道"
-    IDS_TALK5               "与,眨巴了两下眼睛"
-    IDS_TALK6               "轻轻地推了推,的胳膊"
-    IDS_TALK7               "对,点了点头"
-    IDS_TALK8               "问,道"
-    IDS_TALK9               "傻兮兮的朝,笑笑"
-    IDS_TALK10              "对准,就是一拳"
-    IDS_TALK11              "凌空一腿踢在,脑袋上"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_TALK12              "拉着,的手语气心长地说"
-    IDS_TALK13              "狠狠地掴了,几个耳光"
-    IDS_TALK14              "毕恭毕敬地向,弯腰鞠躬"
-    IDS_TALK15              "感到十二分的歉意，低声对,说"
-    IDS_TALK16              "很赞同,"
-    IDS_TALK17              "惊讶的对,吐了吐舌头"
-    IDS_TALK18              "对,摇了摇头"
-    IDS_TALK19              "张大嘴巴，打了个哈欠"
-    IDS_TALK20              "对,微微一笑"
-    IDS_TALK21              "紧紧的握住,的手"
-    IDS_TALK22              "向,挥手"
-    IDS_TALK23              "耸耸双肩"
-    IDS_TALK24              "忍不住放声大哭"
-    IDS_TALK25              "双手捂着脸，呜呜咽咽的"
-    IDS_TALK26              "拍拍,的肩膀，双眼关切的说"
-    IDS_TALK27              "气鼓鼓的嘟嘴道"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_TALK28              "把胸脯拍得噼啪响"
-    IDS_TALK29              "依依不舍地拉着,的衣角"
-    IDS_TALK30              "用深情的眼神，痴痴地看着,"
-    IDS_TALK31              "抓抓头皮露出迷惑的神情"
-    IDS_TALK32              "悄悄地对,耳语"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_S0                  "说话"
-    IDS_S1                  "叫嚷"
-    IDS_S2                  "亲亲"
-    IDS_S3                  "拥抱"
-    IDS_S4                  "暴怒"
-    IDS_S5                  "眨眼"
-    IDS_S6                  "轻推"
-    IDS_S7                  "点头"
-    IDS_S8                  "询问"
-    IDS_S9                  "傻笑"
-    IDS_S10                 "拳打"
-    IDS_S11                 "脚踢"
-    IDS_S12                 "告诫"
-    IDS_S13                 "耳光"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_S14                 "鞠躬"
-    IDS_S15                 "歉意"
-    IDS_S16                 "同意"
-    IDS_S17                 "惊讶"
-    IDS_S18                 "摇头"
-    IDS_S19                 "哈欠"
-    IDS_S20                 "微笑"
-    IDS_S21                 "握手"
-    IDS_S22                 "挥手"
-    IDS_S23                 "耸肩"
-    IDS_S24                 "大哭"
-    IDS_S25                 "抽泣"
-    IDS_S26                 "安慰"
-    IDS_S27                 "生气"
-    IDS_S28                 "承诺"
-    IDS_S29                 "不舍"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_S30                 "深情"
-    IDS_S31                 "迷惑"
-    IDS_S32                 "耳语"
 END
 
 #endif    // Chinese (Simplified, PRC) resources
